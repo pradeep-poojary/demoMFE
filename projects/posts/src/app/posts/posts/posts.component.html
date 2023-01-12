@@ -1,0 +1,25 @@
+<p>posts works!</p>
+<h1>Posts</h1>
+<div>
+  <button class="btn-primary" click="onAddPost()">Add Posts</button>
+</div>
+
+<table class="table">
+  
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let posts of allUserPosts">
+      <td>{{ posts.title }}</td>
+      <td>{{ posts.body }}</td>
+            
+    </tr>
+  </tbody>
+  
+</table>

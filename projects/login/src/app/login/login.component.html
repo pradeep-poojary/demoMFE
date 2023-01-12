@@ -1,0 +1,88 @@
+<h2 *ngIf="login">login</h2>
+
+<div *ngIf="login">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="inputEmail1">Email</label><br />
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter email"
+      />
+    </div>
+
+    &nbsp;
+    <div>
+      <button (click)="onSubmit()" type="submit" class="btn btn-primary">
+        Login</button
+      >&nbsp;
+      <button class="btn btn-primary" (click)="Register()">Register</button>
+    </div>
+  </form>
+</div>
+
+<!-- register -->
+<h2 *ngIf="register">Register</h2>
+
+<div *ngIf="register">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name </label><br />
+      <input formControlName="name" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="gender">gender </label><br />
+      <input  formControlName="gender"
+      class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="email">email</label><br />
+      <input type="text"
+      formControlName="email"
+      class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="status">status </label><br />
+      <input  formControlName="status"
+      class="form-control" type="text" />
+    </div>
+    &nbsp;
+    <div>
+      <button (click)="onRegister()" class="btn btn-primary">Register</button
+      >&nbsp;
+      <button (click)="Back()" class="btn btn-primary">Back</button>&nbsp;
+    </div>
+  </form>
+</div>
+<p *ngIf="successMsg">Registration Successful</p>
+
+<!-- User details -->
+<div *ngIf="LoggedIn">
+  <h3>users Details</h3>
+  <button>
+  <a routerLink="posts" routerLinkActive="active">Posts</a>
+</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>gender</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
